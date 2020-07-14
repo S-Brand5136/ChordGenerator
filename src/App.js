@@ -1,24 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './Components/Header';
+import Container from 'react-bootstrap/Container';
+import TableGrid from './Components/TableGrid';
+import Form from './Components/Form';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+
+  const [items, setItems] = useState([
+    {
+      text: 'Apples',
+      isCompleted: false,
+    },
+    {
+      text: 'Bananas',
+      isCompleted: false,
+    },
+    {
+      text: 'Bread',
+      isCompleted: false,      
+    },
+  ]);
+
+  const addItem = (text) => {
+    const newItem = [...items, { text }];
+    setItems(newItem);
+  }
+
+  const removeItem = (index) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(newItems);
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+        <Container>
+            <TableGrid item={items} removeItem={removeItem}/>
+            <Form addItem={addItem}/>
+        </Container>
     </div>
   );
 }
