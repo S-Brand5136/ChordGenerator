@@ -28,6 +28,16 @@ function App() {
     setItems(newItem);
   }
 
+  const completeItem = index => {
+    const newItems = [...items];
+    if(!newItems[index].isCompleted){
+      newItems[index].isCompleted = true;
+    } else {
+      newItems[index].isCompleted = false;
+    }
+    setItems(newItems);
+  }
+
   const removeItem = (index) => {
     const newItems = [...items];
     newItems.splice(index, 1);
@@ -40,7 +50,7 @@ function App() {
     <div className="App">
       <Header/>
         <Container>
-            <TableGrid item={items} removeItem={removeItem}/>
+            <TableGrid item={items} removeItem={removeItem} completeItem={completeItem}/>
             <Form addItem={addItem}/>
         </Container>
     </div>

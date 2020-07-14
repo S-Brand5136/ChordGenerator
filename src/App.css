@@ -14,3 +14,15 @@ html,
 .removeButton:hover{
   background-color: #ff9093;
 }
+
+.completeButton{
+  background-color: green;
+  border-radius: 10px;
+  float: right;
+  margin-right: 10px;
+  border-style: none;
+}
+
+.completeButton:hover{
+  background-color: greenyellow;
+}
