@@ -9,10 +9,12 @@ html,
   border-radius: 10px;
   background-color: #FF4146;
   border-style: none;
+  color: white;
 }
 
 .removeButton:hover{
   background-color: #ff9093;
+  color: black;
 }
 
 .completeButton{
@@ -21,8 +23,16 @@ html,
   float: right;
   margin-right: 10px;
   border-style: none;
+  color: white;
 }
 
 .completeButton:hover{
   background-color: greenyellow;
+  color: black;
+}
+
+.formBox{
+  margin-top: 4rem;
+  border: 2px dotted rgb(42, 42, 46);
+  padding: 2rem;
 }

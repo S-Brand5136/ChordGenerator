@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Components/Header';
 import Container from 'react-bootstrap/Container';
 import TableGrid from './Components/TableGrid';
@@ -8,23 +8,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
+  const [data, setData] = useState([]);
+
   const [items, setItems] = useState([
     {
       text: 'Apples',
       isCompleted: false,
+      type: 1,
     },
     {
       text: 'Bananas',
       isCompleted: false,
+      type: 1,
     },
     {
       text: 'Bread',
-      isCompleted: false,      
+      isCompleted: false,
+      type: 2,      
     },
   ]);
 
-  const addItem = (text) => {
-    const newItem = [...items, { text }];
+  const addItem = (text, isCompleted, type) => {
+    const newItem = [...items, { text, isCompleted, type }];
     setItems(newItem);
   }
 
@@ -44,13 +49,19 @@ function App() {
     setItems(newItems);
   }
 
+  useEffect(() => {
+      const sorted = [...items].sort((a, b) => b[b.type] - a[b.type]);
+      setData(sorted);
+  })
+  
+
 
 
   return (
     <div className="App">
       <Header/>
         <Container>
-            <TableGrid item={items} removeItem={removeItem} completeItem={completeItem}/>
+            <TableGrid data={data} removeItem={removeItem} completeItem={completeItem}/>
             <Form addItem={addItem}/>
         </Container>
     </div>
