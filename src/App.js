@@ -11,21 +11,6 @@ function App() {
   const [data, setData] = useState([]);
 
   const [items, setItems] = useState([
-    {
-      text: 'Apples',
-      isCompleted: false,
-      type: 1,
-    },
-    {
-      text: 'Bananas',
-      isCompleted: false,
-      type: 1,
-    },
-    {
-      text: 'Bread',
-      isCompleted: false,
-      type: 2,      
-    },
   ]);
 
   const addItem = (text, isCompleted, type) => {
