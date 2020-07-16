@@ -50,9 +50,9 @@ function App() {
   }
 
   useEffect(() => {
-      const sorted = [...items].sort((a, b) => b[b.type] - a[b.type]);
+      const sorted = [...items].sort((a, b) => a.type - b.type);
       setData(sorted);
-  })
+  },       [items]);
   
 
 
