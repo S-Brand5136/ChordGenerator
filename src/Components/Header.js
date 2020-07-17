@@ -1,13 +1,9 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-
 
 const Header = () => {
     return (
     <>
-        <Navbar bg="dark" variant='dark'>
-            <Navbar.Brand  href="#home">Grocery List</Navbar.Brand>
-        </Navbar>
+        <header className='title'> Grocery List <span className='clipBoard'><i className="fas fa-clipboard-list fa-2x"></i></span> </header>
     </>
     )
 }

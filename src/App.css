@@ -36,3 +36,18 @@ html,
   border: 2px dotted rgb(42, 42, 46);
   padding: 2rem;
 }
+
+.title{
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+}
+
+.clipBoard {
+  color: teal;
+}
+
+#tableGrid{
+  margin: 15rem;
+}

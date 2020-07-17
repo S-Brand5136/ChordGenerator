@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-        <Container>
+        <Container className='mt-5'>
             <TableGrid data={data} removeItem={removeItem} completeItem={completeItem}/>
             <Form addItem={addItem}/>
         </Container>
