@@ -1,49 +1,6 @@
 body,
-html,
-.App{
-  background-color: #121213;
-}
-
-.removeButton{
-  float: right;
-  border-radius: 10px;
-  background-color: #FF4146;
-  border-style: none;
-  color: white;
-}
-
-.removeButton:hover{
-  background-color: #ff9093;
-  color: black;
-}
-
-.completeButton{
-  background-color: green;
-  border-radius: 10px;
-  float: right;
-  margin-right: 10px;
-  border-style: none;
-  color: white;
-}
-
-.completeButton:hover{
-  background-color: greenyellow;
-  color: black;
-}
-
-.formBox{
-  margin-top: 4rem;
-  border: 2px dotted rgb(42, 42, 46);
-  padding: 2rem;
-}
-
-.title{
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 3rem;
-  color: white;
-}
-
-.clipBoard {
-  color: teal;
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #2a2a2a;
 }

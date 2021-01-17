@@ -1,55 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "./Components/Header";
-import Container from "react-bootstrap/Container";
-import TableGrid from "./Components/TableGrid";
-import Form from "./Components/Form";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import GeneratorForm from "./Components/GeneratorForm";
+import ChordTable from "./Components/ChordTable";
 
-function App() {
-  const [data, setData] = useState([]);
+// MaterialUI imports
+import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core";
 
-  const [items, setItems] = useState([]);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: "0 2rem 0 2rem",
+  },
+}));
 
-  const addItem = (text, isCompleted, type) => {
-    const newItem = [...items, { text, isCompleted, type }];
-    setItems(newItem);
-  };
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#ed4b82",
+      dark: "#a31545",
+      main: "#e91e63",
+      contrastText: "#fff",
+    },
+    secondary: {
+      light: "#33eb91",
+      dark: "#00a152",
+      main: "#00e676",
+      contrastText: "#FFF",
+    },
+    text: {
+      primary: "#FFF",
+      secondary: "#FFF",
+    },
+  },
+});
 
-  const completeItem = (index) => {
-    const newItems = [...items];
-    if (!newItems[index].isCompleted) {
-      newItems[index].isCompleted = true;
-    } else {
-      newItems[index].isCompleted = false;
-    }
-    setItems(newItems);
-  };
-
-  const removeItem = (index) => {
-    const newItems = [...items];
-    newItems.splice(index, 1);
-    setItems(newItems);
-  };
-
-  useEffect(() => {
-    const sorted = [...items].sort((a, b) => a.type - b.type);
-    setData(sorted);
-  }, [items]);
-
+const App = () => {
+  const classes = useStyles();
   return (
-    <main className="App">
-      <Header />
-      <Container className="mt-5">
-        <TableGrid
-          data={data}
-          removeItem={removeItem}
-          completeItem={completeItem}
-        />
-        <Form addItem={addItem} />
-      </Container>
-    </main>
+    <ThemeProvider theme={theme}>
+      <main>
+        <Header />
+        <div className={classes.root}>
+          <GeneratorForm />
+          <ChordTable />
+        </div>
+      </main>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
