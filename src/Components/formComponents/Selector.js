@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     color: "white",
   },
+  menuItem: {
+    color: "black",
+  },
 }));
 
 const Selector = () => {
@@ -40,7 +43,8 @@ const Selector = () => {
   };
 
   const submitHandler = () => {
-    dispatch(generateChords());
+    const key = `${keySelected} ` + (sharp ? "minor" : "major");
+    dispatch(generateChords(chordsSelected, key));
   };
 
   return (
@@ -60,7 +64,7 @@ const Selector = () => {
             onChange={(e) => setKeySelected(e.target.value)}
           >
             {keys.map((item) => (
-              <MenuItem key={item} value={item}>
+              <MenuItem className={classes.menuItem} key={item} value={item}>
                 {item}
               </MenuItem>
             ))}
@@ -103,16 +107,16 @@ const Selector = () => {
         <Grid item={12}>
           <ButtonGroup color="primary">
             <Button
-              variant={sharp ? "contained" : "outlined"}
-              onClick={() => setSharp(true)}
-            >
-              # Minor
-            </Button>
-            <Button
               variant={!sharp ? "contained" : "outlined"}
               onClick={() => setSharp(false)}
             >
-              ♮ Major
+              Major
+            </Button>
+            <Button
+              variant={sharp ? "contained" : "outlined"}
+              onClick={() => setSharp(true)}
+            >
+              Minor
             </Button>
           </ButtonGroup>
         </Grid>

@@ -12,12 +12,24 @@ import {
   Slide,
 } from "@material-ui/core";
 
-const useStyles = makeStyles(theme({}));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 225,
+  },
+}));
 
-const ChordItem = () => {
+const ChordItem = ({ note }) => {
   const classes = useStyles();
 
-  return <Card></Card>;
+  return (
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography color="secondary" variant="h3" component="h3">
+          {note}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 };
 
 export default ChordItem;
