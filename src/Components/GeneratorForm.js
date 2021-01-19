@@ -19,10 +19,10 @@ const GeneratorForm = () => {
         justify="center"
         alignContent="center"
       >
-        <Grid item container xs={6}>
+        <Grid item xs={12} lg={6}>
           <Selector />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} lg={6}>
           <PreviousSearchs />
         </Grid>
       </Grid>

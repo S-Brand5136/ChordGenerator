@@ -15,6 +15,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 225,
+    padding: "2rem",
   },
 }));
 

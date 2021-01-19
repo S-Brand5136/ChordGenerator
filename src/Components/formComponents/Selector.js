@@ -12,15 +12,23 @@ import {
   makeStyles,
   InputLabel,
   Select,
+  Paper,
   Typography,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  typography: {
-    color: "white",
-  },
+  typography: {},
   menuItem: {
     color: "black",
+  },
+  MuiPaper: {
+    padding: "1rem",
+  },
+  MuiButtonGroup: {
+    marginTop: "1rem",
+  },
+  MuiButton: {
+    marginTop: "1rem",
   },
 }));
 
@@ -30,6 +38,7 @@ const Selector = () => {
   const [keySelected, setKeySelected] = useState("C");
   const [chordsSelected, setChordsSelcted] = useState(["I", "IV", "V"]);
   const [sharp, setSharp] = useState(true);
+  const [variant, setVariant] = useState(false);
   const keys = ["C", "D", "E", "F", "G", "A", "B"];
   const chordNumbers = ["I", "II", "III", "IV", "V", "VI", "VII"];
 
@@ -48,92 +57,118 @@ const Selector = () => {
   };
 
   return (
-    <Grid
-      container
-      spacing={5}
-      direction="row"
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item container justify="center" xs={12} md={6}>
-        <FormControl style={{ width: "20%" }}>
-          <InputLabel id="select-key">Select Key</InputLabel>
-          <Select
-            id="select-key"
-            value={keySelected}
-            onChange={(e) => setKeySelected(e.target.value)}
-          >
-            {keys.map((item) => (
-              <MenuItem className={classes.menuItem} key={item} value={item}>
-                {item}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Grid>
-      <Grid item container justify="center" xs={12} md={6}>
-        <Grid item xs={12}>
-          <Typography className={classes.typography} variant="h6" componen="h6">
-            Select which chords to include:
-          </Typography>
+    <Paper className={classes.MuiPaper}>
+      <Grid
+        container
+        spacing={5}
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+      >
+        <Grid item container justify="center" xs={12} md={6}>
+          <FormControl fullWidth>
+            <InputLabel id="select-key">Select Key</InputLabel>
+            <Select
+              id="select-key"
+              value={keySelected}
+              onChange={(e) => setKeySelected(e.target.value)}
+            >
+              {keys.map((item) => (
+                <MenuItem className={classes.menuItem} key={item} value={item}>
+                  {item} {sharp ? "Minor" : "Major"}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
-        <Grid item xs={12}>
-          <ButtonGroup color="primary">
-            {chordNumbers.map((chord) => (
+        <Grid item xs={12} md={6}>
+          <Grid item xs={12}>
+            <Typography
+              className={classes.typography}
+              variant="h6"
+              componen="h6"
+            >
+              Select which chords to include:
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <ButtonGroup color="primary" className={classes.MuiButtonGroup}>
+              {chordNumbers.map((chord) => (
+                <Button
+                  key={chord}
+                  variant={
+                    chordsSelected.includes(chord) ? "contained" : "outlined"
+                  }
+                  onClick={() => chordSelectHandler(chord)}
+                >
+                  {chord}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          alignItems="center"
+          justify="center"
+          xs={12}
+          md={6}
+        >
+          <Grid item xs={12}>
+            <Typography
+              className={classes.typography}
+              align="left"
+              variant="h6"
+              componen="h6"
+            >
+              Select scale type:
+            </Typography>
+          </Grid>
+          <Grid container item={12}>
+            <ButtonGroup color="primary" className={classes.MuiButtonGroup}>
               <Button
-                key={chord}
-                variant={
-                  chordsSelected.includes(chord) ? "contained" : "outlined"
-                }
-                onClick={() => chordSelectHandler(chord)}
+                variant={!sharp ? "contained" : "outlined"}
+                onClick={() => setSharp(false)}
               >
-                {chord}
+                Major
               </Button>
-            ))}
-          </ButtonGroup>
+              <Button
+                variant={sharp ? "contained" : "outlined"}
+                onClick={() => setSharp(true)}
+              >
+                Minor
+              </Button>
+            </ButtonGroup>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid item container justify="center" xs={12} md={6}>
-        <Grid item xs={12}>
-          <Typography
-            className={classes.typography}
-            align="center"
-            variant="h6"
-            componen="h6"
-          >
-            Select scale type:
-          </Typography>
-        </Grid>
-        <Grid item={12}>
-          <ButtonGroup color="primary">
-            <Button
-              variant={!sharp ? "contained" : "outlined"}
-              onClick={() => setSharp(false)}
+        <Grid item container xs={12} md={6}>
+          <Grid item xs={12}>
+            <Typography
+              className={classes.typography}
+              align="left"
+              variant="h6"
+              componen="h6"
             >
-              Major
-            </Button>
+              Generate Chord Progression{" "}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
             <Button
-              variant={sharp ? "contained" : "outlined"}
-              onClick={() => setSharp(true)}
+              className={classes.MuiButton}
+              variant={!variant ? "outlined" : "contained"}
+              color="primary"
+              size="large"
+              onClick={() => submitHandler()}
+              onMouseOver={() => setVariant(true)}
+              onMouseOut={() => setVariant(false)}
             >
-              Minor
+              Generate
             </Button>
-          </ButtonGroup>
+          </Grid>
         </Grid>
       </Grid>
-      <Grid item container justify="center" xs={12} md={6}>
-        <Grid item xs={12} style={{ position: "relative", top: "1.1rem" }}>
-          <Button
-            variant="outlined"
-            color="primary"
-            size="large"
-            onClick={() => submitHandler()}
-          >
-            Generate
-          </Button>
-        </Grid>
-      </Grid>
-    </Grid>
+    </Paper>
   );
 };
 

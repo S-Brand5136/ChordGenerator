@@ -3,7 +3,13 @@ import { useSelector } from "react-redux";
 import ChordItem from "./cardComponents/ChordItem";
 
 // MaterialUI imports
-import { Box, Grid, LinearProgress, makeStyles } from "@material-ui/core";
+import {
+  Box,
+  Grid,
+  LinearProgress,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   rootElement: {
@@ -19,7 +25,18 @@ const ChordTable = () => {
 
   return (
     <Box className={classes.rootElement}>
-      <Grid container direction="row" justify="center" alignItems="center">
+      <Grid
+        container
+        spacing={5}
+        direction="row"
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item container justify="center" xs={12}>
+          <Typography variant="h4" component="h4">
+            Generated Chords
+          </Typography>
+        </Grid>
         {loading ? (
           <LinearProgress />
         ) : (
