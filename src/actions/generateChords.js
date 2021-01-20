@@ -14,7 +14,10 @@ export const generateChords = (chords, key) => async (dispatch) => {
 
     dispatch({
       type: GENERATE_CHORDS_SUCCESS,
-      payload: { chords: randomizedChords, chordNumbers: chords },
+      payload: {
+        chords: randomizedChords,
+        chordNumbers: chords,
+      },
     });
   } catch (error) {
     dispatch({

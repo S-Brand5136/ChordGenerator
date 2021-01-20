@@ -11,9 +11,12 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   rootElement: {
     marginTop: "3rem",
+  },
+  MuiTypography: {
+    color: "white",
   },
 }));
 
@@ -21,7 +24,7 @@ const ChordTable = () => {
   const classes = useStyles();
 
   const chordsGenerated = useSelector((state) => state.chordsGenerated);
-  const { loading, error, generatedChords } = chordsGenerated;
+  const { loading, generatedChords } = chordsGenerated;
 
   return (
     <Box className={classes.rootElement}>
@@ -33,7 +36,11 @@ const ChordTable = () => {
         alignItems="center"
       >
         <Grid item container justify="center" xs={12}>
-          <Typography variant="h4" component="h4">
+          <Typography
+            className={classes.MuiTypography}
+            variant="h4"
+            component="h4"
+          >
             Generated Chords
           </Typography>
         </Grid>
@@ -42,7 +49,7 @@ const ChordTable = () => {
         ) : (
           generatedChords &&
           generatedChords.chords.map((item, index) => (
-            <Grid xs={2}>
+            <Grid item container justify="center" xs={12} sm={6} md={4} lg={3}>
               <ChordItem key={index} note={item} />
             </Grid>
           ))

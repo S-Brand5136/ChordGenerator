@@ -1,21 +1,13 @@
 import React from "react";
 
 // MaterialUI imports
-import {
-  Box,
-  Card,
-  CardContent,
-  CardActionArea,
-  Hidden,
-  makeStyles,
-  Typography,
-  Slide,
-} from "@material-ui/core";
+import { Card, CardContent, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 225,
     padding: "2rem",
+    marginBottom: "4rem",
   },
 }));
 
@@ -23,9 +15,9 @@ const ChordItem = ({ note }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={0} variant="outlined">
       <CardContent>
-        <Typography color="secondary" variant="h3" component="h3">
+        <Typography variant="h3" component="h3">
           {note}
         </Typography>
       </CardContent>

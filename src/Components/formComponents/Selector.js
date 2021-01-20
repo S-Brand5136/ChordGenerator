@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { generateChords } from "../../actions/generateChords";
 
@@ -17,18 +17,24 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  typography: {},
   menuItem: {
     color: "black",
   },
   MuiPaper: {
-    padding: "1rem",
+    padding: "1.5rem",
+    backgroundColor: "white, 50%",
   },
   MuiButtonGroup: {
     marginTop: "1rem",
   },
   MuiButton: {
     marginTop: "1rem",
+    "&:hover": {
+      padding: "5px 15px 5px 15px",
+      borderStyle: "solid",
+      borderWidth: "1px",
+      borderColor: "#303f9f",
+    },
   },
 }));
 
@@ -37,7 +43,7 @@ const Selector = () => {
   const classes = useStyles();
   const [keySelected, setKeySelected] = useState("C");
   const [chordsSelected, setChordsSelcted] = useState(["I", "IV", "V"]);
-  const [sharp, setSharp] = useState(true);
+  const [sharp, setSharp] = useState(false);
   const [variant, setVariant] = useState(false);
   const keys = ["C", "D", "E", "F", "G", "A", "B"];
   const chordNumbers = ["I", "II", "III", "IV", "V", "VI", "VII"];
@@ -55,6 +61,12 @@ const Selector = () => {
     const key = `${keySelected} ` + (sharp ? "minor" : "major");
     dispatch(generateChords(chordsSelected, key));
   };
+
+  useEffect(() => {
+    const key = `${keySelected} ` + (sharp ? "minor" : "major");
+    dispatch(generateChords(chordsSelected, key));
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Paper className={classes.MuiPaper}>
@@ -158,7 +170,6 @@ const Selector = () => {
               className={classes.MuiButton}
               variant={!variant ? "outlined" : "contained"}
               color="primary"
-              size="large"
               onClick={() => submitHandler()}
               onMouseOver={() => setVariant(true)}
               onMouseOut={() => setVariant(false)}

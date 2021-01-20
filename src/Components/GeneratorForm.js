@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Selector from "./formComponents/Selector";
-import PreviousSearchs from "./formComponents/PreviousSearchs";
 
 import { Box, Grid, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   rootTag: { marginTop: "2rem" },
 }));
 
@@ -21,9 +20,6 @@ const GeneratorForm = () => {
       >
         <Grid item xs={12} lg={6}>
           <Selector />
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <PreviousSearchs />
         </Grid>
       </Grid>
     </Box>
