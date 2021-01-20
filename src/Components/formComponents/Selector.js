@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   },
   MuiButtonGroup: {
     marginTop: "1rem",
+    [theme.breakpoints.down("xs")]: {
+      position: "relative",
+      right: "7px",
+    },
   },
   MuiButton: {
     marginTop: "1rem",
@@ -104,7 +108,6 @@ const Selector = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            {/* <Hidden smUp> */}
             <ButtonGroup
               fullWidth
               color="primary"
@@ -122,22 +125,6 @@ const Selector = () => {
                 </Button>
               ))}
             </ButtonGroup>
-            {/* </Hidden> */}
-            {/* <Hidden smDown>
-              <ButtonGroup color="primary" className={classes.MuiButtonGroup}>
-                {chordNumbers.map((chord) => (
-                  <Button
-                    key={chord}
-                    variant={
-                      chordsSelected.includes(chord) ? "contained" : "outlined"
-                    }
-                    onClick={() => chordSelectHandler(chord)}
-                  >
-                    {chord}
-                  </Button>
-                ))}
-              </ButtonGroup>
-            </Hidden> */}
           </Grid>
         </Grid>
         <Grid
@@ -159,7 +146,7 @@ const Selector = () => {
             </Typography>
           </Grid>
           <Grid container item xs={12}>
-            <ButtonGroup color="primary" className={classes.MuiButtonGroup}>
+            <ButtonGroup color="primary" className={classes.MuiButton}>
               <Button
                 variant={!sharp ? "contained" : "outlined"}
                 onClick={() => setSharp(false)}
