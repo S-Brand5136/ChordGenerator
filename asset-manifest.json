@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ChordGenerator/static/css/main.8a29c7a4.chunk.css",
+    "main.js": "/ChordGenerator/static/js/main.def2646a.chunk.js",
+    "main.js.map": "/ChordGenerator/static/js/main.def2646a.chunk.js.map",
+    "runtime-main.js": "/ChordGenerator/static/js/runtime-main.3e90bfd8.js",
+    "runtime-main.js.map": "/ChordGenerator/static/js/runtime-main.3e90bfd8.js.map",
+    "static/js/2.0db12842.chunk.js": "/ChordGenerator/static/js/2.0db12842.chunk.js",
+    "static/js/2.0db12842.chunk.js.map": "/ChordGenerator/static/js/2.0db12842.chunk.js.map",
+    "index.html": "/ChordGenerator/index.html",
+    "static/css/main.8a29c7a4.chunk.css.map": "/ChordGenerator/static/css/main.8a29c7a4.chunk.css.map",
+    "static/js/2.0db12842.chunk.js.LICENSE.txt": "/ChordGenerator/static/js/2.0db12842.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/ChordGenerator/static/media/backgroundImage.2e088a16.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3e90bfd8.js",
+    "static/js/2.0db12842.chunk.js",
+    "static/css/main.8a29c7a4.chunk.css",
+    "static/js/main.def2646a.chunk.js"
+  ]
+}
