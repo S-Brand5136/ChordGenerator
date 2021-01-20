@@ -49,8 +49,17 @@ const ChordTable = () => {
         ) : (
           generatedChords &&
           generatedChords.chords.map((item, index) => (
-            <Grid item container justify="center" xs={12} sm={6} md={4} lg={3}>
-              <ChordItem key={index} note={item} />
+            <Grid
+              item
+              key={index}
+              container
+              justify="center"
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+            >
+              <ChordItem note={item} />
             </Grid>
           ))
         )}
